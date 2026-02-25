@@ -1,0 +1,119 @@
+// =============================================
+// OpenClaw 统一 Gateway 配置
+// 将前台 Agent(小瑞) 和 经理 Agent(小管) 注册到同一个 Gateway
+//
+// 使用方法:
+//   cp gateway-config/openclaw.json ~/.openclaw/openclaw.json
+//   openclaw gateway restart
+// =============================================
+{
+    // ---- Gateway 基础 ----
+    "gateway": {
+        "port": 18789
+    },
+    // ---- 模型配置 ----
+    "agents": {
+        "defaults": {
+            "model": {
+                "primary": "anthropic/claude-sonnet-4-5",
+                "fallbacks": [
+                    "openai/gpt-4o"
+                ]
+            },
+            "models": {
+                "anthropic/claude-sonnet-4-5": {
+                    "alias": "Sonnet"
+                },
+                "openai/gpt-4o": {
+                    "alias": "GPT-4o"
+                }
+            }
+        },
+        // ---- 多 Agent 注册 ----
+        "list": [
+            {
+                "id": "front-desk",
+                "default": true,
+                "workspace": "REPLACE_WITH_PROJECT_PATH/agents/front-desk",
+                "groupChat": {
+                    "mentionPatterns": [
+                        "@小瑞",
+                        "小瑞",
+                        "前台"
+                    ]
+                }
+            },
+            {
+                "id": "manager",
+                "workspace": "REPLACE_WITH_PROJECT_PATH/agents/manager",
+                "groupChat": {
+                    "mentionPatterns": [
+                        "@小管",
+                        "小管"
+                    ]
+                }
+            }
+        ]
+    },
+    // ---- 频道路由绑定 ----
+    "bindings": [
+        // WebChat → 前台 Agent (客人通过网页/触摸屏交互)
+        {
+            "agentId": "front-desk",
+            "match": {
+                "channel": "webchat"
+            }
+        },
+        // 钉钉 → 经理 Agent (老板/运营/员工通过钉钉交互)
+        {
+            "agentId": "manager",
+            "match": {
+                "channel": "dingtalk"
+            }
+        }
+    ],
+    // ---- 钉钉频道 (@adongguo/dingtalk 插件) ----
+    "channels": {
+        "dingtalk": {
+            "enabled": true,
+            "appKey": "${DINGTALK_APP_KEY}",
+            "appSecret": "${DINGTALK_APP_SECRET}",
+            "robotCode": "${DINGTALK_ROBOT_CODE}",
+            "connectionMode": "stream",
+            "allowedGroups": [
+                "酒店管理群"
+            ]
+        }
+    },
+    // ---- Talk Mode 语音 (前台 Agent 使用) ----
+    "talk": {
+        "voiceId": "pNInz6obpgDQGcFmaJgB",
+        "modelId": "eleven_v3",
+        "outputFormat": "pcm_44100",
+        "interruptOnSpeech": true
+    },
+    // ---- Voice Wake 唤醒词 ----
+    "voiceWake": {
+        "enabled": true,
+        "keywords": [
+            "小瑞",
+            "你好",
+            "前台"
+        ]
+    },
+    // ---- 技能配置 ----
+    "skills": {
+        "load": {
+            "watch": true,
+            "watchDebounceMs": 250
+        }
+    },
+    // ---- Session 配置 ----
+    "session": {
+        "dmScope": "per-channel-peer",
+        "reset": {
+            "mode": "daily",
+            "atHour": 4
+        }
+    }
+}

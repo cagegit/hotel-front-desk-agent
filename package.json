@@ -1,0 +1,26 @@
+{
+  "name": "hotel-front-desk-agent",
+  "version": "1.0.0",
+  "description": "基于 OpenClaw 的酒店 AI Agent 系统 — 前台接待 + 经理管理",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "./scripts/start-all.sh",
+    "start:front-desk": "cd agents/front-desk && openclaw --workspace . --port 3000",
+    "start:manager": "cd agents/manager && openclaw --workspace . --port 3001",
+    "typecheck": "tsc --noEmit",
+    "setup": "./scripts/mac-mini-setup.sh",
+    "check-hardware": "./scripts/check-hardware-mac.sh"
+  },
+  "dependencies": {
+    "openclaw": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,54 @@
+{
+    "agent": {
+        "model": "anthropic/claude-sonnet-4-5",
+        "workspace": "."
+    },
+    "channels": {
+        "dingtalk": {
+            "enabled": true,
+            "appKey": "${DINGTALK_APP_KEY}",
+            "appSecret": "${DINGTALK_APP_SECRET}",
+            "robotCode": "${DINGTALK_ROBOT_CODE}",
+            "connectionMode": "stream",
+            "allowedGroups": [
+                "酒店管理群"
+            ],
+            "activationMode": "mention",
+            "dmPolicy": "pairing"
+        }
+    },
+    "skills": {
+        "load": {
+            "watch": true,
+            "watchDebounceMs": 250
+        },
+        "entries": {
+            "hotel-price-management": {
+                "enabled": true
+            },
+            "hotel-promotion-management": {
+                "enabled": true
+            },
+            "hotel-report-query": {
+                "enabled": true
+            },
+            "hotel-staff-dispatch": {
+                "enabled": true
+            },
+            "hotel-issue-handling": {
+                "enabled": true
+            }
+        }
+    },
+    "tools": {
+        "browser": {
+            "enabled": false
+        },
+        "camera": {
+            "enabled": false
+        }
+    },
+    "server": {
+        "port": 3001
+    }
+}

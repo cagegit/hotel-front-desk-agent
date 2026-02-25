@@ -1,0 +1,56 @@
+{
+    "agent": {
+        "model": "anthropic/claude-sonnet-4-5",
+        "workspace": "."
+    },
+    "talk": {
+        "voiceId": "pNInz6obpgDQGcFmaJgB",
+        "modelId": "eleven_v3",
+        "outputFormat": "pcm_44100",
+        "interruptOnSpeech": true
+    },
+    "voiceWake": {
+        "enabled": true,
+        "keywords": [
+            "小瑞",
+            "你好",
+            "前台"
+        ]
+    },
+    "skills": {
+        "load": {
+            "watch": true,
+            "watchDebounceMs": 250
+        },
+        "entries": {
+            "hotel-check-in": {
+                "enabled": true
+            },
+            "hotel-check-out": {
+                "enabled": true
+            },
+            "hotel-room-service": {
+                "enabled": true
+            },
+            "hotel-vision-pipeline": {
+                "enabled": true
+            },
+            "hotel-voice-interaction": {
+                "enabled": true
+            }
+        }
+    },
+    "tools": {
+        "camera": {
+            "enabled": true,
+            "device": "default",
+            "resolution": "1920x1080"
+        },
+        "browser": {
+            "enabled": false
+        }
+    },
+    "server": {
+        "port": 3000
+    }
+}

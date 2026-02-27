@@ -21,23 +21,6 @@
         "load": {
             "watch": true,
             "watchDebounceMs": 250
-        },
-        "entries": {
-            "hotel-price-management": {
-                "enabled": true
-            },
-            "hotel-promotion-management": {
-                "enabled": true
-            },
-            "hotel-report-query": {
-                "enabled": true
-            },
-            "hotel-staff-dispatch": {
-                "enabled": true
-            },
-            "hotel-issue-handling": {
-                "enabled": true
-            }
         }
     },
     "tools": {

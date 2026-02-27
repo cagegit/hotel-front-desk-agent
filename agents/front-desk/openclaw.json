@@ -21,23 +21,6 @@
         "load": {
             "watch": true,
             "watchDebounceMs": 250
-        },
-        "entries": {
-            "hotel-check-in": {
-                "enabled": true
-            },
-            "hotel-check-out": {
-                "enabled": true
-            },
-            "hotel-room-service": {
-                "enabled": true
-            },
-            "hotel-vision-pipeline": {
-                "enabled": true
-            },
-            "hotel-voice-interaction": {
-                "enabled": true
-            }
         }
     },
     "tools": {

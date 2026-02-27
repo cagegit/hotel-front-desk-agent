@@ -4,18 +4,23 @@
         "workspace": "."
     },
     "talk": {
-        "voiceId": "pNInz6obpgDQGcFmaJgB",
-        "modelId": "eleven_v3",
-        "outputFormat": "pcm_44100",
-        "interruptOnSpeech": true
+        "ttsEngine": "coqui",
+        "baseUrl": "http://127.0.0.1:8000",
+        "endpoint": "/v1/text-to-speech",
+        "voiceId": "default",
+        "outputFormat": "mp3_44100_128",
+        "interruptOnSpeech": true,
+        "timeoutMs": 5000
+    },
+    "fallback": {
+        "enabled": true,
+        "ttsProvider": "elevenlabs",
+        "apiKey": "sk-xxxxx",
+        "voiceId": "pNInz6obpgDQGcFmaJgB"
     },
     "voiceWake": {
         "enabled": true,
-        "keywords": [
-            "小瑞",
-            "你好",
-            "前台"
-        ]
+        "keywords": ["小瑞", "你好", "前台"]
     },
     "skills": {
         "load": {

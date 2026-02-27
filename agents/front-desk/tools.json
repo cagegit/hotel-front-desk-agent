@@ -1,0 +1,12 @@
+{
+  "tools": {
+    "exec": {
+      "enabled": true,
+      "description": "Execute shell commands to interact with local services (TTS, camera, PMS, etc.)"
+    },
+    "bash": {
+      "enabled": true,
+      "description": "Run bash scripts for voice playback and system operations"
+    }
+  }
+}

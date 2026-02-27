@@ -1,6 +1,6 @@
 {
     "agent": {
-        "model": "anthropic/claude-sonnet-4-5",
+        "model": "qwenapi/qwen3.5-flash",
         "workspace": "."
     },
     "channels": {
